@@ -71,8 +71,8 @@ buildvm -m folddef -o lj_folddef.h lj_opt_fold.c
 :NODEBUG
 @if "%1"=="amalg" goto :AMALGDLL
 @if "%1"=="static" goto :STATIC
-%LJCOMPILE% /MT /DLUA_BUILD_AS_DLL /I. /I..\.. /I..\..\tdrlua lj_*.c lib_*.c ..\..\xlua.c ..\..\i64lib.c ..\..\perflib.c 
-%LJCOMPILE% /MT /DLUA_LIB /DLUA_BUILD_AS_DLL /I..\..\luasocket\ /I. /I..\..  ..\..\luasocket\auxiliar.c ..\..\luasocket\buffer.c ..\..\luasocket\except.c ..\..\luasocket\inet.c ..\..\luasocket\io.c ..\..\luasocket\luasocket.c ..\..\luasocket\mime.c ..\..\luasocket\options.c ..\..\luasocket\select.c ..\..\luasocket\tcp.c ..\..\luasocket\timeout.c ..\..\luasocket\udp.c ..\..\luasocket\wsocket.c
+%LJCOMPILE% /DLUA_BUILD_AS_DLL /I. /I..\.. /I..\..\tdrlua lj_*.c lib_*.c ..\..\xlua.c ..\..\i64lib.c ..\..\perflib.c 
+%LJCOMPILE% /DLUA_LIB /DLUA_BUILD_AS_DLL /I..\..\luasocket\ /I. /I..\..  ..\..\luasocket\auxiliar.c ..\..\luasocket\buffer.c ..\..\luasocket\except.c ..\..\luasocket\inet.c ..\..\luasocket\io.c ..\..\luasocket\luasocket.c ..\..\luasocket\mime.c ..\..\luasocket\options.c ..\..\luasocket\select.c ..\..\luasocket\tcp.c ..\..\luasocket\timeout.c ..\..\luasocket\udp.c ..\..\luasocket\wsocket.c
 @if errorlevel 1 goto :BAD
 %LJLINK% /DLL /out:%LJDLLNAME% lj_*.obj lib_*.obj xlua.obj i64lib.obj perflib.obj auxiliar.obj buffer.obj except.obj inet.obj io.obj luasocket.obj mime.obj options.obj select.obj tcp.obj timeout.obj udp.obj wsocket.obj ws2_32.lib
 @if errorlevel 1 goto :BAD
@@ -84,7 +84,7 @@ buildvm -m folddef -o lj_folddef.h lj_opt_fold.c
 @if errorlevel 1 goto :BAD
 @goto :MTDLL
 :AMALGDLL
-%LJCOMPILE% /MT /DLUA_BUILD_AS_DLL ljamalg.c
+%LJCOMPILE% /DLUA_BUILD_AS_DLL ljamalg.c
 @if errorlevel 1 goto :BAD
 %LJLINK% /DLL /out:%LJDLLNAME% ljamalg.obj lj_vm.obj
 @if errorlevel 1 goto :BAD
